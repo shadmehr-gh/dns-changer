@@ -33,7 +33,9 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.minimizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactOnTelegramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shadmehrgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceCodeOnGithubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.githubcomshadmehrghdnschangerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.status_label = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -66,6 +68,11 @@
             this.p_add_dns_label_5 = new System.Windows.Forms.Label();
             this.p_add_label_5 = new System.Windows.Forms.Label();
             this.btn_radar = new System.Windows.Forms.Button();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.textBox_secondary = new System.Windows.Forms.TextBox();
+            this.textBox_primary = new System.Windows.Forms.TextBox();
+            this.btn_custom = new System.Windows.Forms.Button();
+            this.v110ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -73,6 +80,7 @@
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -83,7 +91,7 @@
             this.status_label});
             this.statusStrip1.Location = new System.Drawing.Point(0, 147);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(379, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(449, 26);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -93,7 +101,8 @@
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.minimizeToolStripMenuItem,
             this.contactOnTelegramToolStripMenuItem,
-            this.sourceCodeOnGithubToolStripMenuItem});
+            this.sourceCodeOnGithubToolStripMenuItem,
+            this.v110ToolStripMenuItem});
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
@@ -109,23 +118,41 @@
             // 
             // contactOnTelegramToolStripMenuItem
             // 
+            this.contactOnTelegramToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.shadmehrgToolStripMenuItem});
             this.contactOnTelegramToolStripMenuItem.Name = "contactOnTelegramToolStripMenuItem";
             this.contactOnTelegramToolStripMenuItem.Size = new System.Drawing.Size(245, 26);
             this.contactOnTelegramToolStripMenuItem.Text = "Contact on Telegram";
             this.contactOnTelegramToolStripMenuItem.Click += new System.EventHandler(this.contactOnTelegramToolStripMenuItem_Click);
             // 
+            // shadmehrgToolStripMenuItem
+            // 
+            this.shadmehrgToolStripMenuItem.Name = "shadmehrgToolStripMenuItem";
+            this.shadmehrgToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.shadmehrgToolStripMenuItem.Text = "@shadmehr_g";
+            this.shadmehrgToolStripMenuItem.Click += new System.EventHandler(this.shadmehrgToolStripMenuItem_Click);
+            // 
             // sourceCodeOnGithubToolStripMenuItem
             // 
+            this.sourceCodeOnGithubToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.githubcomshadmehrghdnschangerToolStripMenuItem});
             this.sourceCodeOnGithubToolStripMenuItem.Name = "sourceCodeOnGithubToolStripMenuItem";
             this.sourceCodeOnGithubToolStripMenuItem.Size = new System.Drawing.Size(245, 26);
             this.sourceCodeOnGithubToolStripMenuItem.Text = "Source Code on Github";
             this.sourceCodeOnGithubToolStripMenuItem.Click += new System.EventHandler(this.sourceCodeOnGithubToolStripMenuItem_Click);
             // 
+            // githubcomshadmehrghdnschangerToolStripMenuItem
+            // 
+            this.githubcomshadmehrghdnschangerToolStripMenuItem.Name = "githubcomshadmehrghdnschangerToolStripMenuItem";
+            this.githubcomshadmehrghdnschangerToolStripMenuItem.Size = new System.Drawing.Size(397, 26);
+            this.githubcomshadmehrghdnschangerToolStripMenuItem.Text = "https://github.com/shadmehr-gh/dns-changer";
+            this.githubcomshadmehrghdnschangerToolStripMenuItem.Click += new System.EventHandler(this.githubcomshadmehrghdnschangerToolStripMenuItem_Click);
+            // 
             // status_label
             // 
             this.status_label.ForeColor = System.Drawing.Color.Red;
             this.status_label.Name = "status_label";
-            this.status_label.Size = new System.Drawing.Size(300, 20);
+            this.status_label.Size = new System.Drawing.Size(331, 20);
             this.status_label.Spring = true;
             this.status_label.Text = "Disconnected";
             this.status_label.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
@@ -137,10 +164,11 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(380, 150);
+            this.tabControl1.Size = new System.Drawing.Size(450, 150);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -153,7 +181,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(372, 117);
+            this.tabPage1.Size = new System.Drawing.Size(442, 117);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Shecan";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -198,7 +226,7 @@
             // 
             this.btn_shecan.Location = new System.Drawing.Point(100, 60);
             this.btn_shecan.Name = "btn_shecan";
-            this.btn_shecan.Size = new System.Drawing.Size(180, 40);
+            this.btn_shecan.Size = new System.Drawing.Size(235, 40);
             this.btn_shecan.TabIndex = 0;
             this.btn_shecan.Text = "Connect";
             this.btn_shecan.UseVisualStyleBackColor = true;
@@ -214,7 +242,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(372, 117);
+            this.tabPage2.Size = new System.Drawing.Size(442, 117);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "ElectroTM";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -259,7 +287,7 @@
             // 
             this.btn_electro.Location = new System.Drawing.Point(100, 60);
             this.btn_electro.Name = "btn_electro";
-            this.btn_electro.Size = new System.Drawing.Size(180, 40);
+            this.btn_electro.Size = new System.Drawing.Size(235, 40);
             this.btn_electro.TabIndex = 5;
             this.btn_electro.Text = "Connect";
             this.btn_electro.UseVisualStyleBackColor = true;
@@ -274,7 +302,7 @@
             this.tabPage3.Controls.Add(this.btn_begzar);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(372, 117);
+            this.tabPage3.Size = new System.Drawing.Size(442, 117);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Begzar";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -319,7 +347,7 @@
             // 
             this.btn_begzar.Location = new System.Drawing.Point(100, 60);
             this.btn_begzar.Name = "btn_begzar";
-            this.btn_begzar.Size = new System.Drawing.Size(180, 40);
+            this.btn_begzar.Size = new System.Drawing.Size(235, 40);
             this.btn_begzar.TabIndex = 5;
             this.btn_begzar.Text = "Connect";
             this.btn_begzar.UseVisualStyleBackColor = true;
@@ -334,7 +362,7 @@
             this.tabPage4.Controls.Add(this.btn_403);
             this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(372, 117);
+            this.tabPage4.Size = new System.Drawing.Size(442, 117);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "403";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -379,7 +407,7 @@
             // 
             this.btn_403.Location = new System.Drawing.Point(100, 60);
             this.btn_403.Name = "btn_403";
-            this.btn_403.Size = new System.Drawing.Size(180, 40);
+            this.btn_403.Size = new System.Drawing.Size(235, 40);
             this.btn_403.TabIndex = 5;
             this.btn_403.Text = "Connect";
             this.btn_403.UseVisualStyleBackColor = true;
@@ -394,7 +422,7 @@
             this.tabPage5.Controls.Add(this.btn_radar);
             this.tabPage5.Location = new System.Drawing.Point(4, 29);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(372, 117);
+            this.tabPage5.Size = new System.Drawing.Size(442, 117);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Radar";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -439,23 +467,70 @@
             // 
             this.btn_radar.Location = new System.Drawing.Point(100, 60);
             this.btn_radar.Name = "btn_radar";
-            this.btn_radar.Size = new System.Drawing.Size(180, 40);
+            this.btn_radar.Size = new System.Drawing.Size(235, 40);
             this.btn_radar.TabIndex = 5;
             this.btn_radar.Text = "Connect";
             this.btn_radar.UseVisualStyleBackColor = true;
             this.btn_radar.Click += new System.EventHandler(this.btn_radar_Click);
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.textBox_secondary);
+            this.tabPage6.Controls.Add(this.textBox_primary);
+            this.tabPage6.Controls.Add(this.btn_custom);
+            this.tabPage6.Location = new System.Drawing.Point(4, 29);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(442, 117);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Custom DNS";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // textBox_secondary
+            // 
+            this.textBox_secondary.Location = new System.Drawing.Point(257, 16);
+            this.textBox_secondary.Name = "textBox_secondary";
+            this.textBox_secondary.PlaceholderText = "Secondary Address";
+            this.textBox_secondary.Size = new System.Drawing.Size(140, 27);
+            this.textBox_secondary.TabIndex = 8;
+            this.textBox_secondary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_secondary_KeyPress);
+            // 
+            // textBox_primary
+            // 
+            this.textBox_primary.Location = new System.Drawing.Point(45, 16);
+            this.textBox_primary.Name = "textBox_primary";
+            this.textBox_primary.PlaceholderText = "Primary Address";
+            this.textBox_primary.Size = new System.Drawing.Size(140, 27);
+            this.textBox_primary.TabIndex = 7;
+            this.textBox_primary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_primary_KeyPress);
+            // 
+            // btn_custom
+            // 
+            this.btn_custom.Location = new System.Drawing.Point(100, 60);
+            this.btn_custom.Name = "btn_custom";
+            this.btn_custom.Size = new System.Drawing.Size(235, 40);
+            this.btn_custom.TabIndex = 6;
+            this.btn_custom.Text = "Connect";
+            this.btn_custom.UseVisualStyleBackColor = true;
+            this.btn_custom.Click += new System.EventHandler(this.btn_custom_Click);
+            // 
+            // v110ToolStripMenuItem
+            // 
+            this.v110ToolStripMenuItem.Name = "v110ToolStripMenuItem";
+            this.v110ToolStripMenuItem.Size = new System.Drawing.Size(245, 26);
+            this.v110ToolStripMenuItem.Text = "V1.1.0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 173);
+            this.ClientSize = new System.Drawing.Size(449, 173);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(397, 220);
-            this.MinimumSize = new System.Drawing.Size(397, 220);
+            this.MaximumSize = new System.Drawing.Size(467, 220);
+            this.MinimumSize = new System.Drawing.Size(467, 220);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DNS Changer";
@@ -473,6 +548,8 @@
             this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -517,5 +594,12 @@
         private ToolStripMenuItem minimizeToolStripMenuItem;
         private ToolStripMenuItem contactOnTelegramToolStripMenuItem;
         private ToolStripMenuItem sourceCodeOnGithubToolStripMenuItem;
+        private TabPage tabPage6;
+        private Button btn_custom;
+        private TextBox textBox_secondary;
+        private TextBox textBox_primary;
+        private ToolStripMenuItem shadmehrgToolStripMenuItem;
+        private ToolStripMenuItem githubcomshadmehrghdnschangerToolStripMenuItem;
+        private ToolStripMenuItem v110ToolStripMenuItem;
     }
 }

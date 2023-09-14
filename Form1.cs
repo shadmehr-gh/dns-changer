@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Management;
 using System.Net.NetworkInformation;
+using System.Text.RegularExpressions;
 
 namespace dns_changer
 {
@@ -85,6 +86,7 @@ namespace dns_changer
                 tabPage3.Enabled = false;
                 tabPage4.Enabled = false;
                 tabPage5.Enabled = false;
+                tabPage6.Enabled = false;
                 isconnect = true;
             }
             else
@@ -99,6 +101,7 @@ namespace dns_changer
                 tabPage3.Enabled = true;
                 tabPage4.Enabled = true;
                 tabPage5.Enabled = true;
+                tabPage6.Enabled = true;
                 isconnect = false;
             }
         }
@@ -117,6 +120,7 @@ namespace dns_changer
                 tabPage3.Enabled = false;
                 tabPage4.Enabled = false;
                 tabPage5.Enabled = false;
+                tabPage6.Enabled = false;
                 isconnect = true;
             }
             else
@@ -131,6 +135,7 @@ namespace dns_changer
                 tabPage3.Enabled = true;
                 tabPage4.Enabled = true;
                 tabPage5.Enabled = true;
+                tabPage6.Enabled = true;
                 isconnect = false;
             }
         }
@@ -149,6 +154,7 @@ namespace dns_changer
                 tabPage2.Enabled = false;
                 tabPage4.Enabled = false;
                 tabPage5.Enabled = false;
+                tabPage6.Enabled = false;
                 isconnect = true;
             }
             else
@@ -163,6 +169,7 @@ namespace dns_changer
                 tabPage2.Enabled = true;
                 tabPage4.Enabled = true;
                 tabPage5.Enabled = true;
+                tabPage6.Enabled = true;
                 isconnect = false;
             }
         }
@@ -181,6 +188,7 @@ namespace dns_changer
                 tabPage2.Enabled = false;
                 tabPage3.Enabled = false;
                 tabPage5.Enabled = false;
+                tabPage6.Enabled = false;
                 isconnect = true;
             }
             else
@@ -195,6 +203,7 @@ namespace dns_changer
                 tabPage2.Enabled = true;
                 tabPage3.Enabled = true;
                 tabPage5.Enabled = true;
+                tabPage6.Enabled = true;
                 isconnect = false;
             }
         }
@@ -213,6 +222,7 @@ namespace dns_changer
                 tabPage2.Enabled = false;
                 tabPage3.Enabled = false;
                 tabPage4.Enabled = false;
+                tabPage6.Enabled = false;
                 isconnect = true;
             }
             else
@@ -227,6 +237,62 @@ namespace dns_changer
                 tabPage2.Enabled = true;
                 tabPage3.Enabled = true;
                 tabPage4.Enabled = true;
+                tabPage6.Enabled = true;
+                isconnect = false;
+            }
+        }
+
+        private void btn_custom_Click(object sender, EventArgs e)
+        {
+            if (!isconnect)
+            {
+                string primary_add = textBox_primary.Text;
+                string secondary_add = textBox_secondary.Text;
+                if (primary_add != "" && secondary_add != "")
+                {
+                    string pattern = @"^\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b$";
+                    if (!Regex.IsMatch(textBox_primary.Text, pattern) || !Regex.IsMatch(textBox_secondary.Text, pattern))
+                    {
+                        MessageBox.Show("IP Address must be in the format '255.255.255.255'!");
+                    }
+                    else
+                    {
+                        SetDNS(primary_add, secondary_add);
+                        status_label.Text = "Connected";
+                        status_label.ForeColor = System.Drawing.Color.Green;
+                        btn_custom.Text = "Disconnect";
+                        //p_add_dns_label_5.ForeColor = System.Drawing.Color.Green;
+                        //s_add_dns_label_5.ForeColor = System.Drawing.Color.Green;
+                        tabPage1.Enabled = false;
+                        tabPage2.Enabled = false;
+                        tabPage3.Enabled = false;
+                        tabPage4.Enabled = false;
+                        tabPage5.Enabled = false;
+                        isconnect = true;
+                    }
+                }
+                else if(textBox_primary.Text == "")
+                {
+                    MessageBox.Show("No primary address entered!");
+                }
+                else if (textBox_secondary.Text == "")
+                {
+                    MessageBox.Show("No secondary address entered!");
+                }
+            }
+            else
+            {
+                UnsetDNS();
+                status_label.Text = "Disonnected";
+                status_label.ForeColor = System.Drawing.Color.Red;
+                btn_custom.Text = "Connect";
+                //p_add_dns_label_5.ForeColor = System.Drawing.Color.Black;
+                //s_add_dns_label_5.ForeColor = System.Drawing.Color.Black;
+                tabPage1.Enabled = true;
+                tabPage2.Enabled = true;
+                tabPage3.Enabled = true;
+                tabPage4.Enabled = true;
+                tabPage5.Enabled = true;
                 isconnect = false;
             }
         }
@@ -243,12 +309,52 @@ namespace dns_changer
 
         private void contactOnTelegramToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://t.me/shadmehr_g") { UseShellExecute = true });
+            //Process.Start(new ProcessStartInfo("https://t.me/shadmehr_g") { UseShellExecute = true });
         }
 
         private void sourceCodeOnGithubToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://github.com/shadmehrgh/dns-changer") { UseShellExecute = true });
+            //Process.Start(new ProcessStartInfo("https://github.com/shadmehr-gh/dns-changer") { UseShellExecute = true });
+        }
+
+        private void textBox_primary_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            /*
+            // only allow one decimal point
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+            */
+        }
+
+        private void textBox_secondary_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            /*
+            // only allow one decimal point
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+            */
+        }
+
+        private void shadmehrgToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://t.me/shadmehr_g") { UseShellExecute = true });
+        }
+
+        private void githubcomshadmehrghdnschangerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://github.com/shadmehr-gh/dns-changer") { UseShellExecute = true });
         }
     }
 }
